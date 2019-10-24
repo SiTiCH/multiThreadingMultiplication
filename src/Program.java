@@ -4,15 +4,14 @@ import java.util.Vector;
 
 public class Program {
     public static void main (String args[]) throws InterruptedException {
-        System.out.print("Hello Kitty\n");
         Vector myVector = new Vector();
         System.out.print("Введите длину списка: ");
         Scanner input = new Scanner(System.in);
         int length = input.nextInt();
-        myVector = insert(myVector, length);System.out.println("Введите количество потоков: ");
+        insert(myVector, length);System.out.println("Введите количество потоков: ");
         int numberOfThread = input.nextInt();
         MyThread[] threadArray = new MyThread[numberOfThread];
-        System.out.println("На что умножаем шеф? ");
+        System.out.println("Введите множитель: ");
         int mul = input.nextInt();
         for(int j =0;j<numberOfThread;j++){
             threadArray[j] = new MyThread(j,myVector,mul,numberOfThread);
@@ -39,13 +38,12 @@ public class Program {
 
     }
 
-    public static Vector insert(Vector myVector,int length){
+    private static void insert(Vector myVector,int length){
         Random ran = new Random();
         int i =0;
         while(i<length){
             myVector.add(ran.nextInt(999)+1);
             i++;
         }
-        return myVector;
     }
 }
